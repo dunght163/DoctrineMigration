@@ -1,0 +1,30 @@
+AppBundle\Entity\Company:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: '50'
+        addr:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: '1000'
+
+    oneToMany:
+        companyProductMaps:
+            targetEntity: AppBundle\Entity\CompanyProductMap
+            cascade: ["persist", "remove", "remove"]
+            mappedBy: company
+
+    lifecycleCallbacks: {  }
