@@ -7,6 +7,8 @@ use Doctrine\DBAL\Schema\Schema;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
+ *
+ * Created table 'CompanyProductMap' which related to 'Company' and 'Product'. Simplest relation-table test.
  */
 class Version20150616110540 extends AbstractMigration
 {

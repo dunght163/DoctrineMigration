@@ -32,7 +32,7 @@ class Company
     /**
      * @var string
      */
-    private $description;
+    private $descriptionRename;
 
 
     private $companyProductMaps;
@@ -117,26 +117,26 @@ class Company
     }
 
     /**
-     * Set description
+     * Set descriptionRename
      *
-     * @param string $description
+     * @param string $descriptionRename
      * @return Company
      */
-    public function setDescription($description)
+    public function setDescriptionRename($descriptionRename)
     {
-        $this->description = $description;
+        $this->descriptionRename = $descriptionRename;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get descriptionRename
      *
      * @return string 
      */
-    public function getDescription()
+    public function getDescriptionRename()
     {
-        return $this->description;
+        return $this->descriptionRename;
     }
 
     /**

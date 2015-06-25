@@ -17,7 +17,7 @@ AppBundle\Entity\Company:
         addr:
             type: string
             length: 255
-        description:
+        descriptionRename:
             type: string
             length: '1000'
 

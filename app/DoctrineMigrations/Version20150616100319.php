@@ -7,6 +7,8 @@ use Doctrine\DBAL\Schema\Schema;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
+ *
+ * The first. No change. Table 'Product' created.
  */
 class Version20150616100319 extends AbstractMigration
 {
