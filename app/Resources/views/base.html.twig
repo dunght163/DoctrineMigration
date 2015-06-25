@@ -7,7 +7,14 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <p id="header" style="font-style: italic">Welcome!</p>
+        <hr>
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
+
+        <hr>
+        <p id="footer" style="font-style: italic">Created by <span  style="text-decoration: underline">Dunght163</span></p>
     </body>
 </html>
