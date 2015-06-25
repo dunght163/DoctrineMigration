@@ -4,7 +4,7 @@ Doctrine Migration
 
 1. Install
 ----------
-Doctrine migrations for Symfony are maintained in the (DoctrineMigrationsBundle)[https://github.com/doctrine/DoctrineMigrationsBundle]. The bundle uses external (Doctrine Database Migrations)[https://github.com/doctrine/migrations] library.
+Doctrine migrations for Symfony are maintained in the [DoctrineMigrationsBundle](https://github.com/doctrine/DoctrineMigrationsBundle). The bundle uses external [Doctrine Database Migrations](https://github.com/doctrine/migrations) library.
 
 Follow these steps to install the bundle and the library in the Symfony Standard edition. Add the following to your composer.json file:
 ```
@@ -144,3 +144,5 @@ php app/console doctrine:migrations:execute <version> --up / --down
 -------------
 Great worked!
 -------------
+
+See more details at [Symfony::DoctrineMigrationsBundle](http://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html).
