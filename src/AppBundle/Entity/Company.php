@@ -27,12 +27,12 @@ class Company
     /**
      * @var string
      */
-    private $addr;
+    private $addrRename;
 
     /**
      * @var string
      */
-    private $descriptionRename;
+    private $descriptionRename1;
 
 
     private $companyProductMaps;
@@ -94,49 +94,49 @@ class Company
     }
 
     /**
-     * Set addr
+     * Set addrRename
      *
-     * @param string $addr
+     * @param string $addrRename
      * @return Company
      */
-    public function setAddr($addr)
+    public function setAddrRename($addrRename)
     {
-        $this->addr = $addr;
+        $this->addrRename = $addrRename;
 
         return $this;
     }
 
     /**
-     * Get addr
+     * Get addrRename
      *
      * @return string 
      */
-    public function getAddr()
+    public function getAddrRename()
     {
-        return $this->addr;
+        return $this->addrRename;
     }
 
     /**
-     * Set descriptionRename
+     * Set descriptionRename1
      *
-     * @param string $descriptionRename
+     * @param string $descriptionRename1
      * @return Company
      */
-    public function setDescriptionRename($descriptionRename)
+    public function setDescriptionRename1($descriptionRename1)
     {
-        $this->descriptionRename = $descriptionRename;
+        $this->descriptionRename1 = $descriptionRename1;
 
         return $this;
     }
 
     /**
-     * Get descriptionRename
+     * Get descriptionRename1
      *
      * @return string 
      */
-    public function getDescriptionRename()
+    public function getDescriptionRename1()
     {
-        return $this->descriptionRename;
+        return $this->descriptionRename1;
     }
 
     /**

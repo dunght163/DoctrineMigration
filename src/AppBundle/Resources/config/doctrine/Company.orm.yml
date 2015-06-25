@@ -14,10 +14,10 @@ AppBundle\Entity\Company:
         phone:
             type: string
             length: '50'
-        addr:
+        addrRename:
             type: string
             length: 255
-        descriptionRename:
+        descriptionRename1:
             type: string
             length: '1000'
 
