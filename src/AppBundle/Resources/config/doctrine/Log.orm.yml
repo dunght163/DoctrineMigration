@@ -1,0 +1,29 @@
+AppBundle\Entity\Log:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        userId:
+            type: integer
+            column: user_id
+        createdTime:
+            type: date
+            column: created_time
+        ip:
+            type: string
+            length: 255
+        serverIp:
+            type: string
+            length: 255
+            column: server_ip
+        action:
+            type: string
+            length: 255
+        descr:
+            type: json_array
+    lifecycleCallbacks: {  }
