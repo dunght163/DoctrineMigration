@@ -20,7 +20,7 @@ class Company
     private $name;
 
     /**
-     * @var string
+     * @var int
      */
     private $phone;
 
@@ -73,7 +73,7 @@ class Company
     /**
      * Set phone
      *
-     * @param string $phone
+     * @param int $phone
      * @return Company
      */
     public function setPhone($phone)
@@ -86,7 +86,7 @@ class Company
     /**
      * Get phone
      *
-     * @return string 
+     * @return int
      */
     public function getPhone()
     {
