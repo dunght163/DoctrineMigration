@@ -10,7 +10,7 @@ use Doctrine\DBAL\Schema\Schema;
  *
  * The first. No change. Table 'Product' created.
  */
-class Version20150616100319 extends AbstractMigration
+class Version20150616100319_Master1 extends AbstractMigration
 {
     /**
      * @param Schema $schema
