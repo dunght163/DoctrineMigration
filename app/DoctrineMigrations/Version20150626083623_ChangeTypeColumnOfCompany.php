@@ -8,9 +8,9 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  *
- * Create new table 'Company'. Simplest test doctrine-migrations.
+ * Change type of column and checking data changes. Simplest test!
  */
-class Version20150616103030 extends AbstractMigration
+class Version20150626083623_ChangeTypeColumnOfCompany extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -20,7 +20,7 @@ class Version20150616103030 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE company (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(50) NOT NULL, addr VARCHAR(255) NOT NULL, description VARCHAR(1000) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE company CHANGE phone phone INT NOT NULL');
     }
 
     /**
@@ -31,6 +31,6 @@ class Version20150616103030 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE company');
+        $this->addSql('ALTER TABLE company CHANGE phone phone VARCHAR(50) NOT NULL');
     }
 }

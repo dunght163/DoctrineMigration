@@ -10,7 +10,7 @@ use Doctrine\DBAL\Schema\Schema;
  *
  * Created table 'CompanyProductMap' which related to 'Company' and 'Product'. Simplest relation-table test.
  */
-class Version20150616110540 extends AbstractMigration
+class Version20150616110540_CreateTableCompanyProductMap extends AbstractMigration
 {
     /**
      * @param Schema $schema
