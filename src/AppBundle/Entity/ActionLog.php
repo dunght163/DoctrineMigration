@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Log
  */
-class Log
+class ActionLog
 {
     /**
      * @var integer

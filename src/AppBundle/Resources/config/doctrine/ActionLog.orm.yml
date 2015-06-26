@@ -1,4 +1,4 @@
-AppBundle\Entity\Log:
+AppBundle\Entity\ActionLog:
     type: entity
     table: null
     id:
