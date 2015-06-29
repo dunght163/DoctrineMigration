@@ -1,5 +1,4 @@
 # DoctrineMigration
-Doctrine Migration
 ==================
 
 1. Install
@@ -101,6 +100,11 @@ Get migration status:
 php app/console doctrine:migrations:status
 ```
 
+Get migration status for all versions:
+```
+php app/console doctrine:migrations:status --show-versions
+```
+
 Generate migration blank:
 ```
 php app/console doctrine:migrations:generate
@@ -140,6 +144,16 @@ Execute a special migrate version up/down manually:
 ```
 php app/console doctrine:migrations:execute <version> --up / --down
 ```
+
+5. Some tips
+------------
+5.1 Name of version
+    For more clearly manager version, you should rename the default version name 'VersionYYYYMMDDHHmmss' to 'VersionYYYYMMDDHHmmss_<your changes>'.
+Example: using 'Version20150616103030_CreateTableCompany' instead of 'Version20150616103030', then you will know that this version is for 'Creating Table Company'.
+So you can migrate more exactly and faster.
+
+5.2 Rename table
+    Using diff for auto generating migrate version. Using 'RENAME TABLE ... TO ...' instead of pair of 'CREATE TABLE ...' and 'DROP TABLE'.
 
 -------------
 Great worked!
