@@ -155,6 +155,27 @@ So you can migrate more exactly and faster.
 5.2 Rename table
     Using diff for auto generating migrate version. Using 'RENAME TABLE ... TO ...' instead of pair of 'CREATE TABLE ...' and 'DROP TABLE'.
 
+5.9999 Using git account when commit
+    [Setting email](https://help.github.com/articles/setting-your-email-in-git/) on Github: 'GitHub uses the email address you set in your local Git configuration to associate commits with your GitHub account.'
+    Commands:
+        Setting your email address for every repository on your computer:
+        ```
+        git config --global user.email "your_email@example.com"
+        ```
+        Check again by:
+        ```
+        git config --global user.email
+        ```
+
+        Setting your email address for a single repository
+        ```
+        git config user.email "your_email@example.com"
+        ```
+        Check again by:
+        ```
+        git config user.email
+        ```
+
 -------------
 Great worked!
 -------------
