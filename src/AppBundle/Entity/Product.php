@@ -29,6 +29,11 @@ class Product
      */
     private $description;
 
+    /**
+     * @var string
+     */
+    private $uuid;
+
     private $companyProductMaps;
 
     /**
@@ -108,6 +113,22 @@ class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param string $uuid
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
     }
 
     /**
