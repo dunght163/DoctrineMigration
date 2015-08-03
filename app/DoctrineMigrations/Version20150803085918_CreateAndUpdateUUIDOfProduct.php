@@ -51,21 +51,38 @@ class Version20150803085918_CreateAndUpdateUUIDOfProduct extends AbstractMigrati
         $this->addSql('CREATE TABLE product_tmp (id INT AUTO_INCREMENT NOT NULL, uuid VARCHAR(255), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
 
         //3. build data for product_tmp
-        $allProductTemps = array_map(function ($prod) {
-            return '('
-            . '\'' . $prod['id'] . '\''
-            . ', '
-            . '\'' . $this->createUUID() . '\''
-            . ')';
-        }, $allProducts);
+        //// split into 1000 records for each insertion
+        $RECORDS_PER_INSERTION = 1000;
+        $totalInsertions = (int) (count($allProducts) / $RECORDS_PER_INSERTION) + ((count($allProducts) % $RECORDS_PER_INSERTION) == 0 ? 0 : 1);
+        $this->warnIf(true, '==== $totalInsertions: ' . $totalInsertions);
 
-        $values = implode(', ', $allProductTemps);
+        for ($i = 0; $i < $totalInsertions; $i ++) {
+            $from = $i * $RECORDS_PER_INSERTION;
+            $count = (($from + $RECORDS_PER_INSERTION) > count($allProducts)) ? (count($allProducts) - $from) : $RECORDS_PER_INSERTION;
+            $to = $from + $count - 1;
 
-        $this->warnIf(true, '==== values to update product uuid: ' . $values);
+            $this->warnIf(true, '==== insert ' . $i . ' from ' . $from . ' to ' . $to . ' (' . $count . ')');
 
-        //4. insert data for product_tmp
-        //NOT YET RUN???: $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES (?)', [$values]);
-        $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES ' . $values);
+            //0: 0*1000 - 1000 = 0000 - 0999
+            //1: 1*1000 - 1000 = 1000 - 1999
+            $allProducts_i = array_slice($allProducts, $from, $count);
+
+            $allProductTemps = array_map(function ($prod) {
+                return '('
+                . '\'' . $prod['id'] . '\''
+                . ', '
+                . '\'' . $this->createUUID() . '\''
+                . ')';
+            }, $allProducts_i);
+
+            $values = implode(', ', $allProductTemps);
+
+            $this->warnIf(true, '==== values to update product uuid: ' . $values);
+
+            //4. insert data for product_tmp
+            //NOT YET RUN???: $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES (?)', [$values]);
+            $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES ' . $values);
+        }
 
         //5. update uuid of product
         $this->addSql('UPDATE product t, product_tmp t_tmp SET t.uuid = t_tmp.uuid WHERE t.id = t_tmp.id');
