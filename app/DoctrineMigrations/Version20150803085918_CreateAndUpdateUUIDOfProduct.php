@@ -36,18 +36,42 @@ class Version20150803085918_CreateAndUpdateUUIDOfProduct extends AbstractMigrati
 
     private function updateUUIDForProduct()
     {
-        $this->addSql('CREATE TABLE product_tmp (INT id NOT NULL, VARCHAR uuid LENGTH 255)');
-
+        //1. fetch all from product
         $allProducts = $this->connection->executeQuery('SELECT id from product')->fetchAll();
-        $allProductTemps = array_map(function ($adTag) {
-            return [$adTag['id'], $this->createUUID()];
+
+        //check if has no product
+        if (null === $allProducts || !is_array($allProducts) || count($allProducts) < 1) {
+            $this->warnIf(true, '==== has ' . '0' . ' product');
+            return;
+        }
+
+        $this->warnIf(true, '==== has ' . count($allProducts) . ' products');
+
+        //2. create table product_tmp
+        $this->addSql('CREATE TABLE product_tmp (id INT AUTO_INCREMENT NOT NULL, uuid VARCHAR(255), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+
+        //3. build data for product_tmp
+        $allProductTemps = array_map(function ($prod) {
+            return '('
+            . '\'' . $prod['id'] . '\''
+            . ', '
+            . '\'' . $this->createUUID() . '\''
+            . ')';
         }, $allProducts);
 
-        $values = explode(', ', $allProductTemps);
+        $values = implode(', ', $allProductTemps);
 
-        $this->addSql('INSERT INTO product_tmp (id, ref_id) VALUES (?)', [$values]);
+        $this->warnIf(true, '==== values to update product uuid: ' . $values);
 
+        //4. insert data for product_tmp
+        //NOT YET RUN???: $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES (?)', [$values]);
+        $this->addSql('INSERT INTO product_tmp (id, uuid) VALUES ' . $values);
+
+        //5. update uuid of product
         $this->addSql('UPDATE product t, product_tmp t_tmp SET t.uuid = t_tmp.uuid WHERE t.id = t_tmp.id');
+
+        //6. drop table product_tmp
+        $this->addSql('DROP TABLE product_tmp');
     }
 
     private function createUUID()
