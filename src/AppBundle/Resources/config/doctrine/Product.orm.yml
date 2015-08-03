@@ -15,6 +15,10 @@ AppBundle\Entity\Product:
             type: float
         description:
             type: json_array
+        uuid:
+            type: string
+            length: 255
+            nullable: true
 
     oneToMany:
         companyProductMaps:
